@@ -1,12 +1,11 @@
 # Flask-webApp-motorq
  
-### Table of Content
-* Introduction
+### 🗒️Table of Content
+
 * Prerequisites
 * Installation Guide
 * Supported Platforms
 
-## 🗒️Introduction 
 
 ## Prerequisites✔️
 Make sure you have 
@@ -49,3 +48,4 @@ Returns a list of vehicles and render on the vehicles page in tabular fashion an
 
 ![Vehicle Management](/imags-Readme/Vehicle_Management.png)
 
+**Thank you 
