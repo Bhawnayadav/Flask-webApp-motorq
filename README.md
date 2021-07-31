@@ -1,6 +1,6 @@
 # Flask-webApp-motorq
  
-###Table of Content
+### Table of Content
 * Introduction
 * Prerequisites
 * Installation Guide
@@ -27,13 +27,11 @@ installed before proceeding with the further steps.
 
 ## Result
 location points from the vehicles data to render on the map using GET request.
-  - API : GET /vehicles
+  
     + Features of landing page:
-    + There should be a marker cluster indicating the vehicles on the map.
-    + On zooming in, the clusters should split into individual vehicle
-  markers
-    + On hovering over the markers, popup should be visible containing the vehicle
-  info.
-    + There should be a link to vehicle management page from the dashboard.
+    + A marker cluster indicating the vehicles on the map.
+    + On zooming in, the clusters split into individual vehicle markers
+    + On hovering over the markers, popups displays the vehicle info.
+    + A link to vehicle management page from the page.
 
 
