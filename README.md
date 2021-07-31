@@ -1,6 +1,6 @@
 # Flask-webApp-motorq
  
-###Table of Content
+### Table of Content
 * Introduction
 * Prerequisites
 * Installation Guide
@@ -26,14 +26,21 @@ installed before proceeding with the further steps.
 *Map application interacts with vehicle managemnt page using port 5001. 
 
 ## Result
-location points from the vehicles data to render on the map using GET request.
-  - API : GET /vehicles
-    + Features of landing page:
-    + There should be a marker cluster indicating the vehicles on the map.
-    + On zooming in, the clusters should split into individual vehicle
-  markers
-    + On hovering over the markers, popup should be visible containing the vehicle
-  info.
-    + There should be a link to vehicle management page from the dashboard.
 
+### Map Application
+location points from the vehicles data to render on the map using GET request.
+  
+    + Features of landing page:
+    + A marker cluster indicating the vehicles on the map.
+    + On zooming in, the clusters split into individual vehicle markers
+    + On hovering over the markers, popups displays the vehicle info.
+    + A link to vehicle management page from the page.
+[MapClusterImage](/imags-Readme/Map with Clusters.png)
+[Clusters seperated](/imags-Readme/Clusters separated into individual Markers.png)
+
+### Vehicle Management
+Returns a list of vehicles and render on the vehicles page in tabular fashion and perform **CRUD** operations 
+  + An edit button, where we can edit licensePlate, driver, office.
+  + Supports infinite scrolling
+[Vehicle Management](/imags-Readme/Vehicle Management.png)
 
