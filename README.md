@@ -35,12 +35,17 @@ location points from the vehicles data to render on the map using GET request.
     + On zooming in, the clusters split into individual vehicle markers
     + On hovering over the markers, popups displays the vehicle info.
     + A link to vehicle management page from the page.
+
 ![MapClusterImage](/imags-Readme/Map with Clusters.png)
+
 ![Clusters seperated](/imags-Readme/Clusters separated into individual Markers.png)
+
 ![Vehicle Info](/imags-Readme/Vehicle Info.png)
+
 ### Vehicle Management
 Returns a list of vehicles and render on the vehicles page in tabular fashion and perform **CRUD** operations 
   + An edit button, where we can edit licensePlate, driver, office.
   + Supports infinite scrolling
+
 ![Vehicle Management](/imags-Readme/Vehicle Management.png)
 
