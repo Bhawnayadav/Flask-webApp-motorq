@@ -1,0 +1,365 @@
+{% extends 'base.html' %}
+{% include 'header.html' %}
+ 
+ 
+ 
+{% block title %} Home {% endblock %}
+ 
+{% block body %}
+ 
+
+<div class="container">
+    <div class="row">
+        <div class="col md-12">
+ 
+            <div class="jumbotron p-3" style= "width: 1455px">
+ 
+                <h2>Manage <b>Vehicles </b>  <button type="button"  class="btn btn-success float-right"
+                data-toggle="modal" data-target="#mymodal">Add New Vehicle</button> </h2>
+                
+  
+                {% with messages = get_flashed_messages() %}
+ 
+                {% if messages %}
+ 
+                {% for message in messages %}
+ 
+                <div class="alert alert-success alert-dismissable" role="alert">
+ 
+                    <button type="button" class="close" data-dismiss="alert" aria-label="close">
+ 
+                        <span aria-hidden="true">x</span>
+ 
+                    </button>
+ 
+ 
+                {{message}}
+ 
+ 
+                </div>
+ 
+ 
+                {% endfor %}
+ 
+                {% endif %}
+                {% endwith %}
+ 
+ 
+                <table class="table table-hover table-dark">
+ 
+                    <tr>
+ 
+                        <th>ID</th>
+                        <th>Vin</th>
+                        <th>LicencePlate</th>
+                        <th>Driver</th> 
+                        <th>MMYyear</th>
+                        <th>MMYmake</th>
+                        <th>MMYmodel</th>
+                        <th>CustomerName</th>
+                        <th>Office</th>
+                        <th>StatusIgnition</th>
+                        <th>StatusSpeed</th>
+                        <th>LocationLat</th>
+                        <th>LocationLon</th>
+                    </tr>
+ 
+ 
+                   {% for row in vehicles %}
+                    <tr>
+                        <td>{{row.id}}</td>
+                        <td>{{row.Vin}}</td>
+                        <td>{{row.LicencePlate}}</td>
+                        <td>{{row.Driver}}</td>
+                        <td>{{row.MMYyear}}</td>
+                        <td>{{row.MMYmake}}</td>
+                        <td>{{row.MMYmodel}}</td>
+                        <td>{{row.CustomerName}}</td> 
+                        <td>{{row.Office}}</td>
+                        <td>{{row.StatusIgnition}}</td>
+                        <td>{{row.StatusSpeed}}</td>
+                        <td>{{row.LocationLat}}</td>
+                        <td>{{row.LocationLon}}</td> 
+                        <td>
+                            <a href="/update/{{row.id}}" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#modaledit{{row.id}}">Edit</a>
+                            <a href="/delete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are You Sure To Delete ?')">Delete</a>
+ 
+ 
+                        </td>
+ 
+                    </tr>
+ 
+ 
+                  <!-- Modal Edit Vehicle-->
+<div id="modaledit{{row.id}}" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+ 
+ 
+      <div class="modal-content">
+ 
+ 
+         <div class="modal-header">
+ 
+ 
+            <h4 class="modal-title">Update Information</h4>
+ 
+ 
+         </div>
+ 
+ 
+         <div class="modal-body">
+ 
+ 
+            <form action="{{url_for('update',id=row.id)}}" method="POST">
+ 
+ 
+               <div class="form-group">
+ 
+ 
+                  <label>LicencePlate:</label>
+                   <input type="hidden"  name="id" value="{{row.id}}">
+ 
+                  <input type="text" class="form-control" name="LicencePlate" value="{{row.LicencePlate}}">
+ 
+ 
+               </div>
+ 
+ 
+ 
+               <div class="form-group">
+ 
+ 
+                  <label>Driver:</label>
+ 
+                  <input type="text" class="form-control" name="Driver" value="{{row.Driver}}">
+ 
+ 
+               </div>
+ 
+ 
+               <div class="form-group">
+ 
+ 
+                  <label>Office:</label>
+ 
+                  <input type="text" class="form-control" name="Office" value="{{row.Office}}">
+ 
+ 
+               </div>
+ 
+ 
+               <div class="form-group">
+ 
+ 
+                  <button class="btn btn-primary" type="submit">Update</button>
+ 
+ 
+               </div>
+ 
+ 
+            </form>
+ 
+ 
+         </div>
+ 
+ 
+         <div class="modal-footer">
+ 
+ 
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ 
+ 
+         </div>
+ 
+ 
+      </div>
+ 
+ 
+   </div>
+ 
+</div>
+ 
+ 
+                    {% endfor %}
+ 
+ 
+                </table>
+ 
+ 
+            </div>
+ 
+ 
+ 
+                  <!-- Modal Add Vehicle-->
+ 
+ 
+<div id="mymodal" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+ 
+            <h4 class="modal-title">Add Vehicle</h4>
+         </div>
+         <div class="modal-body">
+ 
+            <form action="{{url_for('insert')}}"  method="POST">
+ 
+ 
+               <div class="form-group">
+ 
+                  <label>Vin:</label>
+                  <input type="number" class="form-control" name="Vin" required="1">
+ 
+ 
+               </div>
+ 
+ 
+                <div class="form-group">
+ 
+ 
+                  <label>LicencePlate:</label>
+                  <input type="text" class="form-control" name="LicencePlate" required="1">
+ 
+ 
+               </div>
+               
+                <div class="form-group">
+ 
+ 
+                  <label>Driver:</label>
+                  <input type="text" class="form-control" name="Driver" required="1">
+ 
+ 
+               </div> 
+               
+                <div class="form-group">
+ 
+ 
+                  <label>MMYyear:</label>
+                  <input type="Number" class="form-control" name="MMYyear" required="1">
+ 
+ 
+               </div> 
+               
+               
+                <div class="form-group">
+ 
+ 
+                  <label>MMYmake :</label>
+                  <input type="text" class="form-control" name="MMYmake " required="1">
+ 
+ 
+               </div> 
+               
+               
+                <div class="form-group">
+ 
+ 
+                  <label>MMYmodel:</label>
+                  <input type="text" class="form-control" name="MMYmodel" required="1">
+ 
+ 
+               </div> 
+               
+               
+                <div class="form-group">
+ 
+ 
+                  <label>CustomerName:</label>
+                  <input type="text" class="form-control" name="CustomerName" required="1">
+ 
+ 
+               </div> 
+               
+                <div class="form-group">
+ 
+ 
+                  <label>Office:</label>
+                  <input type="text" class="form-control" name="Office" required="1">
+ 
+ 
+               </div> 
+               
+                <div class="form-group">
+ 
+ 
+                  <label>StatusIgnition:</label>
+                  <input type="text" class="form-control" name="StatusIgnition" required="1">
+ 
+ 
+               </div> 
+               
+                <div class="form-group">
+ 
+ 
+                  <label>StatusSpeed:</label>
+                  <input type="number" class="form-control" name="StatusSpeed" required="1">
+ 
+ 
+               </div> 
+               
+                <div class="form-group">
+ 
+ 
+                  <label>LocationLat:</label>
+                  <input type="number" step="any" class="form-control" name="LocationLat" required="1">
+ 
+ 
+               </div> 
+                                                                                                             
+                <div class="form-group">
+ 
+ 
+                  <label>LocationLon:</label>
+                  <input type="number" step="any" class="form-control" name="LocationLon" required="1">
+ 
+ 
+               </div>
+ 
+ 
+ 
+               <div class="form-group">
+ 
+ 
+                  <button class="btn btn-primary" type="submit">Add Vehicle</button>
+ 
+ 
+               </div>
+ 
+ 
+            </form>
+ 
+ 
+         </div>
+ 
+ 
+         <div class="modal-footer">
+ 
+ 
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+ 
+ 
+         </div>
+ 
+ 
+      </div>
+ 
+ 
+   </div>
+ 
+ 
+</div>
+ 
+ 
+ 
+ 
+ 
+        </div>
+ 
+    </div>
+ 
+ 
+</div>
+ 
+ 
+{% endblock %}
